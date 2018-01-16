@@ -91,7 +91,6 @@ export default {
                     key:"sort",
                     align: 'center',
                     render: (h, params) => {
-                        console.log(params)
                         return h('Button', {
                             props: {
                                 type: 'ghost'

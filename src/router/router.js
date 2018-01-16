@@ -219,7 +219,7 @@ export const appRouter = [
     {
         path: '/orderCenter',
         name: 'order-center',
-        icon: 'compose',
+        icon: 'drag',
         title: '订单中心',
         component: Main,
         children: [

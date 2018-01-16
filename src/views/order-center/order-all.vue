@@ -16,13 +16,13 @@
 					<div class="searchBox" style="margin: 0px 0px 16px;">
 						<Row>
 							搜索：
-	                        <Input v-model="searchKey" placeholder="请输入关键字，支持订单编号、收货人、联系电话、下单人手机号码" style="width: 420px"></Input>
+	                        <Input v-model="searchParamsList.key" placeholder="请输入关键字，支持订单编号、收货人、联系电话、下单人手机号码" style="width: 420px"></Input>
 	                        下单时间：
 	                        <DatePicker type="datetime" placeholder="起始时间" style="width: 200px"></DatePicker>
 	                        ~
 	                        <DatePicker type="datetime" placeholder="截止时间" style="width: 200px"></DatePicker>
-	                        <Select v-model="searchtype" style="width:150px" placeholder="全部商品">
- 	                            <Option v-for="item in orderTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+	                        <Select v-model="searchParamsList.type" style="width:150px" placeholder="全部商品">
+ 	                            <Option v-for="item in searchParamsList.typeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
 	                        </Select>
 	                        <Button type="primary" icon="ios-search">搜索</Button>
 	                        <span style="margin:0 15px;cursor:pointer;">查看全部</span>
@@ -144,7 +144,12 @@ export default {
                     width: 270,
                     button: ['detail','delete','send']
                 }
-            ]
+            ],
+            searchParamsList: {
+                type:'',
+                typeList:[],
+                key:''
+            }
         };
     },
     methods: {
