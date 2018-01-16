@@ -12,26 +12,29 @@
                     <p slot="title">
                         <!-- <Icon type="ios-keypad"></Icon> -->
                         商品分类
+                        <span class="title_right">
+                        	<Button type="primary">导出订单</Button>
+                        </span>
                     </p>
 					<div class="searchBox" style="margin: 0px 0px 16px;">
 						<Row>
 							搜索：
-							<Input v-model="searchKey" placeholder="请输入订单号、收货人、收货人手机号码" style="width: 250px"></Input>
+							<Input v-model="searchParamsList.key" placeholder="请输入订单号、收货人、收货人手机号码" style="width: 250px"></Input>
 	                        下单时间：
-	                        <DatePicker type="datetime" placeholder="起始时间" style="width: 200px"></DatePicker>
+	                        <DatePicker type="datetime" placeholder="起始时间" style="width: 200px" v-model="searchParamsList.startTime"></DatePicker>
 	                        ~
-	                        <DatePicker type="datetime" placeholder="截止时间" style="width: 200px"></DatePicker>
+	                        <DatePicker type="datetime" placeholder="截止时间" style="width: 200px" v-model="searchParamsList.endTime"></DatePicker>
 	                        订单状态：
-	                        <Select v-model="searchOrderStatus" style="width:150px" placeholder="全部">
- 	                            <Option v-for="item in orderStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+	                        <Select v-model="searchParamsList.orderStatus" style="width:150px" placeholder="全部">
+ 	                            <Option v-for="item in searchParamsList.orderStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
 	                        </Select>
 							会员组:
-	                        <Select v-model="searchGroup" style="width:150px" placeholder="全部">
- 	                            <Option v-for="item in orderGroupList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+	                        <Select v-model="searchParamsList.group" style="width:150px" placeholder="全部">
+ 	                            <Option v-for="item in searchParamsList.groupList" :value="item.value" :key="item.value">{{ item.label }}</Option>
 	                        </Select>
 	                        维权状态：
-	                        <Select v-model="searchSafeguard" style="width:150px" placeholder="全部">
- 	                            <Option v-for="item in orderSafeguardList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+	                        <Select v-model="searchParamsList.safeguardStatus" style="width:150px" placeholder="全部">
+ 	                            <Option v-for="item in searchParamsList.safeguardStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
 	                        </Select>
 	                        <Button type="primary" icon="ios-search">搜索</Button>
 	                        <span style="margin:0 15px;cursor:pointer;">查看全部</span>
@@ -162,7 +165,16 @@ export default {
                     width: 90,
                     button: ['detail']
                 }
-            ]
+            ],
+            searchParamsList: {
+                safeguardStatus:'',
+                safeguardStatusList:[],
+                key:'',
+                group:'',
+                groupList:[],
+                startTime:null,
+                endTime:null
+            }
         };
     },
     methods: {

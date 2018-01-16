@@ -7,7 +7,9 @@
 	<div>
 		<Row class="margin-top-10">
 			<Card>
-				<p slot="title">订单统计</p>
+				<p slot="title">
+					订单统计
+				</p>
 				<Row class="order_card_box">
 					<div class="order_card" v-for="item in order">
 						<Card :padding="30">

@@ -12,15 +12,19 @@
                     <p slot="title">
                         <!-- <Icon type="ios-keypad"></Icon> -->
                         商品分类
+                        <span class="title_right">
+							<Button type="primary">导出订单</Button>
+							<Button type="primary">导出发票</Button>
+						</span>
                     </p>
 					<div class="searchBox" style="margin: 0px 0px 16px;">
 						<Row>
 							搜索：
 	                        <Input v-model="searchParamsList.key" placeholder="请输入关键字，支持订单编号、收货人、联系电话、下单人手机号码" style="width: 420px"></Input>
 	                        下单时间：
-	                        <DatePicker type="datetime" placeholder="起始时间" style="width: 200px"></DatePicker>
+	                        <DatePicker type="datetime" placeholder="起始时间" style="width: 200px" v-model="searchParamsList.startTime"></DatePicker>
 	                        ~
-	                        <DatePicker type="datetime" placeholder="截止时间" style="width: 200px"></DatePicker>
+	                        <DatePicker type="datetime" placeholder="截止时间" style="width: 200px" v-model="searchParamsList.endTime"></DatePicker>
 	                        <Select v-model="searchParamsList.type" style="width:150px" placeholder="全部商品">
  	                            <Option v-for="item in searchParamsList.typeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
 	                        </Select>
@@ -148,7 +152,9 @@ export default {
             searchParamsList: {
                 type:'',
                 typeList:[],
-                key:''
+                key:'',
+                startTime:null,
+                endTime:null
             }
         };
     },

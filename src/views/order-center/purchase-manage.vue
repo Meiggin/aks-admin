@@ -17,14 +17,14 @@
 						<Row>
 							搜索：
 							姓名：
-							<Input v-model="searchKey" placeholder="姓名" style="width: 150px"></Input>
+							<Input v-model="searchParamsList.name" placeholder="姓名" style="width: 150px"></Input>
 	                        公司：
-	                        <Input v-model="searchKey" placeholder="公司" style="width: 150px"></Input>
+	                        <Input v-model="searchParamsList.company" placeholder="公司" style="width: 150px"></Input>
 	                        联系电话：
-	                       <Input v-model="searchKey" placeholder="联系电话：" style="width: 150px"></Input>
+	                       <Input v-model="searchParamsList.tel" placeholder="联系电话：" style="width: 150px"></Input>
 	                        申请状态：
-	                        <Select v-model="applyStatus" style="width:150px" placeholder="全部">
- 	                            <Option v-for="item in applyStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+	                        <Select v-model="searchParamsList.applyStatus" style="width:150px" placeholder="全部">
+ 	                            <Option v-for="item in searchParamsList.applyStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
 	                        </Select>
 	                        <Button type="primary" icon="ios-search">搜索</Button>
 						</Row>
@@ -160,7 +160,14 @@ export default {
                     width: 90,
                     button: ['delete']
                 }
-            ]
+            ],
+            searchParamsList: {
+                name:'',
+                company:'',
+                tel:'',
+                applyStatus:'',
+                applyStatusList:[]
+            }
         };
     },
     methods: {

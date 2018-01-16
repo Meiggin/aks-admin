@@ -12,18 +12,22 @@
                     <p slot="title">
                         <!-- <Icon type="ios-keypad"></Icon> -->
                         商品分类
+                        <span class="title_right">
+                        	<Button type="primary">导出订单</Button>
+                        	<Button type="primary">导出发票</Button>
+                        </span>
                     </p>
 					<div class="searchBox" style="margin: 0px 0px 16px;">
 						<Row>
 							搜索：
-							<Select v-model="searchtype" style="width:150px" placeholder="订单编号">
- 	                            <Option v-for="item in orderTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+							<Select v-model="searchParamsList.type" style="width:150px" placeholder="订单编号">
+ 	                            <Option v-for="item in searchParamsList.typeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
 	                        </Select>
-	                        <Input v-model="searchKey" placeholder="关键字" style="width: 150px"></Input>
+	                        <Input v-model="searchParamsList.key" placeholder="关键字" style="width: 150px"></Input>
 	                        下单时间：
-	                        <DatePicker type="datetime" placeholder="起始时间" style="width: 200px"></DatePicker>
+	                        <DatePicker type="datetime" placeholder="起始时间" style="width: 200px" v-model="searchParamsList.startTime"></DatePicker>
 	                        ~
-	                        <DatePicker type="datetime" placeholder="截止时间" style="width: 200px"></DatePicker>
+	                        <DatePicker type="datetime" placeholder="截止时间" style="width: 200px" v-model="searchParamsList.endTime"></DatePicker>
 	                        <Button type="primary" icon="ios-search">搜索</Button>
 	                        <span style="margin:0 15px;cursor:pointer;">查看全部</span>
 						</Row>
@@ -144,7 +148,14 @@ export default {
                     width: 270,
                     button: ['detail','delete','send']
                 }
-            ]
+            ],
+            searchParamsList: {
+                type:'',
+                typeList:[],
+                key:'',
+                startTime:null,
+                endTime:null
+            }
         };
     },
     methods: {
