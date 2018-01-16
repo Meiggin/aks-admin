@@ -23,8 +23,15 @@
             <Col span="16" style="float: right; text-align:right;" class="table_botom_r" v-if="total !== 0">
                 <Page size="small" :total="total" :current="current" placement="top" @on-change="changePage" @on-page-size-change="changePageSize" show-total show-elevator show-sizer></Page>
             </Col>
+                
+        </Row>  
 
-        </Row>
+        <Modal v-model="imgPrev.show">
+            <p slot="header">预览图片</p>
+            <img :src="imgPrev.src" alt="" v-if="imgPrev.show" style="width: 100%;">
+            <div slot="footer"></div>
+        </Modal>
+
     </div>
 </template>
 
@@ -144,7 +151,7 @@ const saveIncellEditBtn = (vm, h, param) => {
 const cellInput = (vm, h, param, item) => {
     return h('Input', {
         props: {
-            type: 'text',
+            src: 'text',
             value: vm.edittingStore[param.index][item.key]
         },
         on: {
@@ -155,7 +162,50 @@ const cellInput = (vm, h, param, item) => {
         }
     });
 };
-
+const my_editButton = (vm, h , currentRow , index) => {
+    return h('Button', {
+        props: {
+            type: 'primary'        
+        },
+        style: {
+            margin: '0 5px',
+            minWidth: '40px'
+        },
+        on: {
+            'click': () => {
+              console.log(currentRow.router.id)
+               vm.$router.push(currentRow.router);
+            }
+        }
+    }, '编辑');
+};
+const my_deleteButton = (vm, h, currentRow , index) => {
+    return h('Poptip', {
+        props: {
+            confirm: true,
+            title: '您确定要删除这条数据吗?',
+            transfer: true
+        },
+        on: {
+            'on-ok': () => {
+                vm.thisTableData.splice(index, 1);
+                vm.$emit('input', vm.handleBackdata(vm.thisTableData));
+                vm.$emit('on-delete', vm.handleBackdata(vm.thisTableData), index);
+            }
+        }
+    }, [
+    h('Button', {
+        style: {
+            margin: '0 5px',
+            minWidth: '40px'
+        },
+        props: {
+            type: 'error',
+            placement: 'top'
+        }
+    }, '删除')
+    ]);
+};
 export default {
     name: 'canEditTable',
     props: {
@@ -181,7 +231,11 @@ export default {
         return {
             columns: [],
             thisTableData: [],
-            edittingStore: []
+            edittingStore: [],
+            imgPrev:{
+                show:false,
+                src:null  
+            }
         };
     },
     created () {
@@ -289,6 +343,48 @@ export default {
                             } else {
                                 return h('div', [
                                     deleteButton(this, h, currentRowData, param.index)
+                                ]);
+                            }
+                        }
+                    };
+                }
+                if (item.imgprev) {
+                    item.render = (h, param) => {
+                       return h('img',{
+                            attrs:{
+                                src:param.row[param.column.key]
+                            },
+                            style: {
+                                height: param.column.width/2 + 'px',
+                                width: '100%'
+                            },
+                            on: {
+                                'click':()=>{
+                                    console.log(param);
+                                    console.log(this);
+                                    this.imgPrev.src = param.row[param.column.key];
+                                    this.imgPrev.show = true;
+                                }
+                            }
+                        })   
+                    };
+                }
+                if (item.button) {
+                    item.render = (h, param) => {
+                        let currentRowData = this.thisTableData[param.index];
+                        if (item.button.length === 2) {
+                            return h('div', [
+                                my_editButton(this, h, currentRowData, param.index),
+                                my_deleteButton(this, h, currentRowData, param.index)
+                            ]);
+                        } else if (item.button.length === 1) {
+                            if (item.button[0] === 'edit') {
+                                return h('div', [
+                                    my_editButton(this, h, currentRowData, param.index)
+                                ]);
+                            } else {
+                                return h('div', [
+                                    my_deleteButton(this, h, currentRowData, param.index)
                                 ]);
                             }
                         }

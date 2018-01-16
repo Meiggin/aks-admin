@@ -68,6 +68,34 @@ export const otherRouter = {
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
 export const appRouter = [
     {
+        path: '/website',
+        icon: 'key',
+        name: 'website',
+        title: '官网',
+        component: Main,
+        children: [
+        { path: 'homePage', title: '官网首页', name: 'home-page', component: () => import('@/views/website/home-page.vue') },
+        { path: 'aboutUs', title: '关于我们', name: 'about-us', component: () => import('@/views/website/about-us.vue') },
+        { path: 'mediaCenter', title: '媒体中心', name: 'media-center', component: () => import('@/views/website/media-center.vue') },
+        { path: 'social', title: '社会责任', name: 'social', component: () => import('@/views/website/social.vue') },
+        { path: 'joinUs', title: '人才招聘', name: 'join-us', component: () => import('@/views/website/join-us.vue') },
+        { path: 'contactUs', title: '联系我们', name: 'contact-us', component: () => import('@/views/website/contact-us.vue') },
+        { path: 'bannerImg', title: '栏目banner配图', name: 'banner-img', component: () => import('@/views/website/banner-img.vue') },
+        ]
+    },
+    {
+        path: '/store',
+        icon: 'key',
+        name: 'store',
+        title: '商城',
+        component: Main,
+        children: [
+        { path: 'homePage', title: '公告管理', name: 'notice', component: () => import('@/views/store/notice.vue') },
+        { path: 'storeHomePageV3', title: '商城首页2.0', name: 'store-home-page-v2', component: () => import('@/views/store/store-home-page-v2.vue') },
+        { path: 'storeHomePageV2', title: '商城首页3.0', name: 'store-home-page-v3', component: () => import('@/views/store/store-home-page-v3.vue') },
+        ]
+    },
+    {
         path: '/access',
         icon: 'key',
         name: 'access',
@@ -191,6 +219,7 @@ export const appRouter = [
     {
         path: '/goodsManage',
         name: 'goods-manage',
+        icon: 'compose',
         title: '商品管理',
         component: Main,
         children: [

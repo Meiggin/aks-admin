@@ -6,6 +6,7 @@
 <template>
     <div>
         <Row class="margin-top-10">
+
             <Col span="24">
                 <Card>
                     <p slot="title">
@@ -31,11 +32,7 @@
                         <span style="margin-left:15px;cursor:pointer;">查看全部</span>
                     </div>
                     <Row :gutter="10">
-                       <!--  <Col span="2">
-                            <Row type="flex" justify="center" align="middle" class="edittable-table-get-currentdata-con">
-                                <Button type="primary" @click="getCurrentData">当前数据</Button>
-                            </Row>
-                        </Col> -->
+
                         <Col span="24">
                             <div class="edittable-table-height-con">
                                 <can-edit-table 
@@ -51,6 +48,7 @@
                                     :current="1"
                                     @on-change="setPage"
                                     @on-page-size-change="setPageSize"
+                                    @on-delete="deteleGoods"
                                 >
                                     <div slot="bottom_left">
                                         <Button type="success" @click="selectAll(true)">全选</Button>
@@ -63,23 +61,8 @@
                                 </can-edit-table>
                             </div>
                         </Col>
-                        <!-- <Modal :width="900" v-model="showCurrentTableData">
-                            <can-edit-table refs="table5" v-model="editInlineAndCellData" :columns-list="showCurrentColumns"></can-edit-table>
-                        </Modal> -->
+                        
                     </Row>
-                    <!-- <Row class="table_botom">
-                        <Col span="8" style="float: left;" class="table_botom_l">
-                            <Button type="success" @click="selectAll(true)">全选</Button>
-                            <Button type="warning" @click="selectAll(false)">取消</Button>
-                            <Button type="success" @click="changeSelectIsSale(true)">上架</Button>
-                            <Button type="warning" @click="changeSelectIsSale(false)">下架</Button>
-                            <Button type="success" @click="changeIsSaleAll(true)">一键上架</Button>
-                            <Button type="warning" @click="changeIsSaleAll(false)">一键下架</Button>
-                        </Col>
-                        <Col span="16" style="float: right; text-align:right;" class="table_botom_r">
-                           <Page :total="total" :current="1" @on-change="setPage" @on-page-size-change="setPageSize"></Page>
-                        </Col>
-                    </Row> -->
                 </Card>
             </Col>
 
@@ -90,49 +73,6 @@
 <script>
 
 import canEditTable from '@/components/table/canEditTable.vue';
-
-const editButton = (vm, h , index) => {
-    return h('Button', {
-        props: {
-            type: 'primary'        
-        },
-        style: {
-            margin: '0 5px',
-            minWidth: '40px'
-        },
-        on: {
-            'click': () => {
-                vm.editGoods(index);
-            }
-        }
-    }, '编辑');
-};
-
-const deleteButton = (vm, h, index) => {
-    return h('Poptip', {
-        props: {
-            confirm: true,
-            title: '您确定要删除这条数据吗?',
-            transfer: true
-        },
-        on: {
-            'on-ok': () => {
-                vm.deteleGoods(index);
-            }
-        }
-    }, [
-    h('Button', {
-        style: {
-            margin: '0 5px',
-            minWidth: '40px'
-        },
-        props: {
-            type: 'error',
-            placement: 'top'
-        }
-    }, '删除')
-    ]);
-};
 
 const isSaleButton = (vm, h, currentRow , index) => {
     return h('Button', {
@@ -181,22 +121,7 @@ export default {
                     key: 'img',
                     align: 'center',
                     width: 120,
-                    render: (h, params) => {
-                        return h('img',{
-                            attrs:{
-                                src:params.row.img
-                            },
-                            style: {
-                                maxHeight: '50px',
-                                width: '100%'
-                            },
-                            on: {
-                                'click':()=>{
-
-                                }
-                            }
-                        })    
-                    }
+                    imgprev:true
                 },
                 {
                     title: '所属分类',
@@ -248,14 +173,9 @@ export default {
                 {
                     title: '操作',
                     align: 'center',
-                    key: 'handle',
+                    key: 'router',
                     width: 180,
-                    render: (h, params) => {
-                        return h('div',[
-                            editButton(this,h,params.index),
-                            deleteButton(this,h,params.index)
-                        ]);
-                    }
+                    button: ['edit','delete']
                 }
             ],
             goodsListDate:[],
@@ -343,7 +263,8 @@ export default {
                     price: Math.floor(Math.random()*1000),
                     color: ['红色','黄色','蓝色'][Math.floor(Math.random()*3)],
                     w: Math.floor(Math.random()*1000),
-                    isSale: [true,false][Math.floor(Math.random()*2)]
+                    isSale: [true,false][Math.floor(Math.random()*2)],
+                    router: {path: '/goodsManage/goodsList/editGoods', query: {id:2}}
                 })
             }
             return data;
@@ -396,7 +317,6 @@ export default {
             });
         },
         deteleGoods (index){
-            this.goodsListDate.splice(index,1);
             this.$Message.success('删除成功');
             this.setPage(this.currentPage);
         },

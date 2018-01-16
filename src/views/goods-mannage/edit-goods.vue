@@ -129,8 +129,7 @@ const isSaleButton = (vm, h, currentRow , index) => {
 export default {
     name: 'goods-list',
     components: {
-        canEditTable,
-        Page
+        canEditTable
     },
     data () {
         return {

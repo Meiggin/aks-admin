@@ -1,6 +1,6 @@
 export default {
     'zh-CN': {
-        home: '首页',
+        home: '管理中心',
         switchLangTitle: '切换语言',
         international: '多语言切换',
         iviewComponentTitle: 'iview组件多语言切换',
@@ -16,7 +16,7 @@ export default {
         showPoptipText: '点击显示气泡提示'
     },
     'zh-TW': {
-        home: '首頁',
+        home: '管理中心',
         switchLangTitle: '切換語言',
         international: '多語言切換',
         iviewComponentTitle: 'iview組件多語言切換',
@@ -32,7 +32,7 @@ export default {
         showPoptipText: '點擊顯示氣泡提示'
     },
     'en-US': {
-        home: 'home',
+        home: 'management-center',
         switchLangTitle: 'Switch Lang',
         international: 'Switch Lang',
         tip: 'Note: iview-admin just to demonstrate how to achieve multi-language switching, so only the current page to do the translation.',
