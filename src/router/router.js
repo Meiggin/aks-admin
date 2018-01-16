@@ -61,7 +61,7 @@ export const otherRouter = {
         { path: 'order/:order_id', title: '订单详情', name: 'order-info', component: () => import('@/views/advanced-router/component/order-info.vue') }, // 用于展示动态路由
         { path: 'shopping', title: '购物详情', name: 'shopping', component: () => import('@/views/advanced-router/component/shopping-info.vue') }, // 用于展示带参路由
         { path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue') },
-        { path: '/goodsManage/goodsList/editGoods', title: '编辑商品', name: 'edit-goods', component: () => import('@/views/goods-mannage/edit-goods.vue') }
+        // { path: '/goodsManage/goodsList/editGoods', title: '编辑商品', name: 'edit-goods', component: () => import('@/views/goods-mannage/edit-goods.vue') }
     ]
 };
 
@@ -217,16 +217,79 @@ export const appRouter = [
     //     ]
     // },
     {
+        path: '/orderCenter',
+        name: 'order-center',
+        icon: 'compose',
+        title: '订单中心',
+        component: Main,
+        children: [
+            { path: 'orderCount', title: '订单概况', name: 'order-count', component: resolve => { require(['@/views/order-center/order-count.vue'], resolve); } },
+            { path: 'orderAll', title: '所有订单', name: 'order-all',  component: resolve => { require(['@/views/order-center/order-all.vue'], resolve); } },
+            { path: 'orderVip', title: 'VIP订单', name: 'order-vip', component: resolve => { require(['@/views/order-center/order-vip.vue'], resolve); } },
+            { path: 'orderMake', title: '预约订单', name: 'order-make',  component: resolve => { require(['@/views/order-center/order-make.vue'], resolve); } },
+            { path: 'financeOrder', title: '财务待办', name: 'finance-order',  component: resolve => { require(['@/views/order-center/finance-order.vue'], resolve); } },
+            { path: 'saleOrder', title: '售后待办', name: 'sale-order',  component: resolve => { require(['@/views/order-center/sale-order.vue'], resolve); } },
+            { path: 'ratingManage', title: '评价管理', name: 'rating-manage',  component: resolve => { require(['@/views/order-center/rating-manage.vue'], resolve); } },
+            { path: 'replyManage', title: '回复内容管理', name: 'reply-manage',  component: resolve => { require(['@/views/order-center/reply-manage.vue'], resolve); } },
+            { path: 'purchaseManage', title: '企业采购', name: 'purchase-manage',  component: resolve => { require(['@/views/order-center/purchase-manage.vue'], resolve); } }
+        ]
+    },
+    {
+        path: '/memberManage',
+        name: 'member-manage',
+        icon: 'compose',
+        title: '会员管理',
+        component: Main,
+        children: [
+            { path: 'memberList', title: '会员列表', name: 'member-list', component: resolve => { require(['@/views/member-manage/member-list.vue'], resolve); } },
+            { path: 'memberGroup', title: '会员组', name: 'member-group',  component: resolve => { require(['@/views/member-manage/member-group.vue'], resolve); } },
+            { path: 'privilegedCode', title: '特权码', name: 'privileged-code', component: resolve => { require(['@/views/member-manage/privileged-code.vue'], resolve); } },
+            { path: 'channelClass', title: '通道分类', name: 'channel-class',  component: resolve => { require(['@/views/member-manage/channel-class.vue'], resolve); } },
+            { path: 'opinionFeed', title: '意见反馈', name: 'opinion-feed',  component: resolve => { require(['@/views/member-manage/opinion-feed.vue'], resolve); } },
+        ]
+    },
+    {
         path: '/goodsManage',
         name: 'goods-manage',
         icon: 'compose',
         title: '商品管理',
         component: Main,
         children: [
-            { path: 'goodsList', title: '商品管理', name: 'goods-list', component: resolve => { require(['@/views/goods-mannage/goods-list.vue'], resolve); } },
-            { path: 'typeList', title: '分类管理', name: 'type-list',  component: resolve => { require(['@/views/goods-mannage/type-list.vue'], resolve); } },
-            { path: 'brandList', title: '品牌管理', name: 'brand-list', component: resolve => { require(['@/views/goods-mannage/brand-list.vue'], resolve); } },
-            { path: 'labelList', title: '标签管理', name: 'label-List',  component: resolve => { require(['@/views/goods-mannage/label-List.vue'], resolve); } }
+            { path: 'goodsList', title: '商品管理', name: 'goods-list', component: resolve => { require(['@/views/goods-manage/goods-list.vue'], resolve); } },
+            { path: 'typeList', title: '分类管理', name: 'type-list',  component: resolve => { require(['@/views/goods-manage/type-list.vue'], resolve); } },
+            { path: 'brandList', title: '品牌管理', name: 'brand-list', component: resolve => { require(['@/views/goods-manage/brand-list.vue'], resolve); } },
+            { path: 'labelList', title: '标签管理', name: 'label-List',  component: resolve => { require(['@/views/goods-manage/label-List.vue'], resolve); } }
+        ]
+    },
+    {
+        path: '/integralManage',
+        name: 'integral-manage',
+        icon: 'compose',
+        title: '积分管理',
+        component: Main,
+        children: [
+            { path: 'integralOrder', title: '积分订单', name: 'integral-order', component: resolve => { require(['@/views/integral-manage/integral-order.vue'], resolve); } },
+            { path: 'integralGoods', title: '积分商品', name: 'integral-goods',  component: resolve => { require(['@/views/integral-manage/integral-goods.vue'], resolve); } },
+            { path: 'integralConfig', title: '积分配置', name: 'integral-config', component: resolve => { require(['@/views/integral-manage/integral-config.vue'], resolve); } },
+            { path: 'serviceOrder', title: '售后订单', name: 'service-order',  component: resolve => { require(['@/views/integral-manage/service-order.vue'], resolve); } },
+        ]
+    },
+    {
+        path: '/marketingGameplay',
+        name: 'marketing-gameplay',
+        icon: 'compose',
+        title: '营销玩法',
+        component: Main,
+        children: [
+            { path: 'controlCenter', title: '控制中心', name: 'control-center', component: resolve => { require(['@/views/marketing-gameplay/control-center.vue'], resolve); } },
+            { path: 'advanceSale', title: '预售活动', name: 'advance-sale',  component: resolve => { require(['@/views/marketing-gameplay/advance-sale.vue'], resolve); } },
+            { path: 'specialOffer', title: '限时特价', name: 'special-offer', component: resolve => { require(['@/views/marketing-gameplay/special-offer.vue'], resolve); } },
+            { path: 'registerPackage', title: '注册礼包列表', name: 'register-package',  component: resolve => { require(['@/views/marketing-gameplay/register-package.vue'], resolve); } },
+            { path: 'timeLimit', title: '限时限购', name: 'time-limit', component: resolve => { require(['@/views/marketing-gameplay/time-limit.vue'], resolve); } },
+            { path: 'insaneBargain', title: '疯狂砍价', name: 'insane-bargain',  component: resolve => { require(['@/views/marketing-gameplay/insane-bargain.vue'], resolve); } },
+            { path: 'groupPurch', title: '团购', name: 'group-purch', component: resolve => { require(['@/views/marketing-gameplay/group-purch.vue'], resolve); } },
+            { path: 'rotaryTable', title: '大转盘', name: 'rotary-table',  component: resolve => { require(['@/views/marketing-gameplay/rotary-table.vue'], resolve); } },
+            { path: 'groupBuy', title: '组合套购', name: 'group-buy',  component: resolve => { require(['@/views/marketing-gameplay/group-buy.vue'], resolve); } },
         ]
     },
     {
@@ -252,6 +315,31 @@ export const appRouter = [
         children: [
             { path: 'mutative-router', title: '动态路由', name: 'mutative-router', icon: 'link', component: () => import('@/views/advanced-router/mutative-router.vue') },
             { path: 'argument-page', title: '带参页面', name: 'argument-page', icon: 'android-send', component: () => import('@/views/advanced-router/argument-page.vue') }
+        ]
+    },
+    {
+        path: '/systemSetting',
+        name: 'system-setting',
+        icon: 'compose',
+        title: '系统配置',
+        component: Main,
+        children: [
+            { path: 'reservationSetting', title: '预约设置', name: 'reservation-setting',  component: resolve => { require(['@/views/system-setting/reservation-setting.vue'], resolve); } },
+            { path: 'areaSetting', title: '地区设置', name: 'area-setting', component: resolve => { require(['@/views/system-setting/area-setting.vue'], resolve); } },
+            { path: 'inforSetting', title: '系统信息设置', name: 'infor-setting',  component: resolve => { require(['@/views/system-setting/infor-setting.vue'], resolve); } },
+            { path: 'gatewaySetting', title: '短信网关设置', name: 'gateway-setting', component: resolve => { require(['@/views/system-setting/gateway-setting.vue'], resolve); } },
+            { path: 'registSetting', title: '注册设置', name: 'regist-setting',  component: resolve => { require(['@/views/system-setting/regist-setting.vue'], resolve); } },
+            { path: 'smsSetting', title: '短信设置', name: 'sms-setting', component: resolve => { require(['@/views/system-setting/sms-setting.vue'], resolve); } },
+            { path: 'shopSetting', title: '店铺设置', name: 'shop-setting',  component: resolve => { require(['@/views/system-setting/shop-setting.vue'], resolve); } },
+            { path: 'mailSetting', title: '邮件服务器设置', name: 'mail-setting',  component: resolve => { require(['@/views/system-setting/mail-setting.vue'], resolve); } },
+            { path: 'backstageLog', title: '后台操作日志', name: 'backstage-log', component: resolve => { require(['@/views/system-setting/backstage-log.vue'], resolve); } },
+            { path: 'linkManage', title: '友情链接管理', name: 'link-manage',  component: resolve => { require(['@/views/system-setting/link-manage.vue'], resolve); } },
+            { path: 'adManage', title: '广告管理', name: 'ad-manage', component: resolve => { require(['@/views/system-setting/ad-manage.vue'], resolve); } },
+            { path: 'optimalManage', title: '网站优化管理', name: 'optimal-manage',  component: resolve => { require(['@/views/system-setting/optimal-manage.vue'], resolve); } },
+            { path: 'versionSetting', title: '版本设置', name: 'version-setting', component: resolve => { require(['@/views/system-setting/version-setting.vue'], resolve); } },
+            { path: 'marketSetting', title: '营销设置', name: 'market-setting',  component: resolve => { require(['@/views/system-setting/market-setting.vue'], resolve); } },
+            { path: 'webSetting', title: '网站建设设置', name: 'web-setting', component: resolve => { require(['@/views/system-setting/web-setting.vue'], resolve); } },
+            { path: 'orderSetting', title: '订单设置', name: 'order-setting',  component: resolve => { require(['@/views/system-setting/order-setting.vue'], resolve); } },
         ]
     },
     // {

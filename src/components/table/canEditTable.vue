@@ -1,13 +1,9 @@
 <style lang="less">
-    .show-edit-btn{
-        display: none;
-        margin-left: -10px;
-    }
-    .ivu-table-cell:hover .show-edit-btn{
-        display: inline-block;
-    }
+    .show-edit-btn{ display: none; margin-left: -10px;}
+    .ivu-table-cell:hover .show-edit-btn{display: inline-block;}
     .table_botom {margin: 25px 10px;}
     .table_botom .table_botom_l button{ margin: 5px 10px; }
+    .ivu-page{ display: inline-block; }
 </style>
 
 <template>
@@ -173,11 +169,26 @@ const my_editButton = (vm, h , currentRow , index) => {
         },
         on: {
             'click': () => {
-              console.log(currentRow.router.id)
-               vm.$router.push(currentRow.router);
+               vm.$emit('on-edit', vm.handleBackdata(vm.thisTableData), index);
             }
         }
     }, '编辑');
+};
+const my_detailButton = (vm, h , currentRow , index) => {
+    return h('Button', {
+        props: {
+            type: 'primary'        
+        },
+        style: {
+            margin: '0 5px',
+            minWidth: '40px'
+        },
+        on: {
+            'click': () => {
+               vm.$emit('on-edit', vm.handleBackdata(vm.thisTableData), index);
+            }
+        }
+    }, '详情');
 };
 const my_deleteButton = (vm, h, currentRow , index) => {
     return h('Poptip', {
@@ -188,7 +199,6 @@ const my_deleteButton = (vm, h, currentRow , index) => {
         },
         on: {
             'on-ok': () => {
-                vm.thisTableData.splice(index, 1);
                 vm.$emit('input', vm.handleBackdata(vm.thisTableData));
                 vm.$emit('on-delete', vm.handleBackdata(vm.thisTableData), index);
             }
@@ -205,6 +215,73 @@ const my_deleteButton = (vm, h, currentRow , index) => {
         }
     }, '删除')
     ]);
+};
+const my_otherButton = (vm, h, name , currentRow , index) => {
+    console.log(name);
+    
+    let buttonName,popTitle,type;
+    switch(name){
+        case 'send':
+        buttonName = "发货";
+        popTitle = "确认发货?"
+        type= "warning"
+        break;
+        case 'edit':
+        buttonName = "编辑";
+        type= "success"
+        break;
+        case 'detail':
+        buttonName = "详情";
+        type= "success"
+        break;
+        case 'delete':
+        buttonName = "删除";
+        popTitle = "确认删除?"
+        type= "error"
+        break;
+
+    }
+    if (popTitle) {
+        return h('Poptip', {
+
+            props: {
+                confirm: true,
+                title: popTitle,
+                transfer: true
+            },
+            on: {
+                'on-ok': () => {
+                    vm.$emit('on-'+ name, vm.handleBackdata(vm.thisTableData), index);
+                }
+            }
+        }, [
+        h('Button', {
+            style: {
+                margin: '0 5px',
+                minWidth: '40px'
+            },
+            props: {
+                type: type,
+                placement: 'top'
+            }
+        }, buttonName)
+        ]);
+    }else{
+        return h('Button', {
+            props: {
+                type: type        
+            },
+            style: {
+                margin: '0 5px',
+                minWidth: '40px'
+            },
+            on: {
+                'click': () => {
+                   vm.$emit('on-' + name, vm.handleBackdata(vm.thisTableData), index);
+               }
+           }
+       }, buttonName);
+    }
 };
 export default {
     name: 'canEditTable',
@@ -360,8 +437,6 @@ export default {
                             },
                             on: {
                                 'click':()=>{
-                                    console.log(param);
-                                    console.log(this);
                                     this.imgPrev.src = param.row[param.column.key];
                                     this.imgPrev.show = true;
                                 }
@@ -372,22 +447,11 @@ export default {
                 if (item.button) {
                     item.render = (h, param) => {
                         let currentRowData = this.thisTableData[param.index];
-                        if (item.button.length === 2) {
-                            return h('div', [
-                                my_editButton(this, h, currentRowData, param.index),
-                                my_deleteButton(this, h, currentRowData, param.index)
-                            ]);
-                        } else if (item.button.length === 1) {
-                            if (item.button[0] === 'edit') {
-                                return h('div', [
-                                    my_editButton(this, h, currentRowData, param.index)
-                                ]);
-                            } else {
-                                return h('div', [
-                                    my_deleteButton(this, h, currentRowData, param.index)
-                                ]);
-                            }
+                        let arr = [];
+                        for(let i in item.button){
+                            arr.push(my_otherButton(this, h, item.button[i] , currentRowData, param.index))
                         }
+                        return h('div',arr);
                     };
                 }
             });
