@@ -243,6 +243,14 @@ const my_otherButton = (vm, h, name , currentRow , index) => {
         buttonName = "送积分";
         type= "success"
         break;
+        case 'active':
+        buttonName = "激活";
+        type= "success"
+        break;
+        case 'see':
+        buttonName = "查看";
+        type= "success"
+        break;
 
 
     }

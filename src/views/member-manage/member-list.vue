@@ -156,6 +156,7 @@ export default {
                     title: 'UID',
                     key: 'id',
                     align: 'center',
+                    width:120
                 },
                 {
                     title: '账户名',

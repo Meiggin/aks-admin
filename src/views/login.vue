@@ -39,6 +39,7 @@
 
 <script>
 import Cookies from 'js-cookie';
+import { login } from '@/api/login.js';
 export default {
     data () {
         return {
@@ -60,17 +61,23 @@ export default {
         handleSubmit () {
             this.$refs.loginForm.validate((valid) => {
                 if (valid) {
-                    Cookies.set('user', this.form.userName);
-                    Cookies.set('password', this.form.password);
-                    this.$store.commit('setAvator', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg');
-                    if (this.form.userName === 'iview_admin') {
-                        Cookies.set('access', 0);
-                    } else {
-                        Cookies.set('access', 1);
-                    }
-                    this.$router.push({
-                        name: 'home_index'
-                    });
+                    login(this.userName,this.password).then((res)=>{
+                        if (res.status !== '1') {
+                            this.$Message.warning(res.info);
+                        }else{
+                            Cookies.set('user', this.form.userName);
+                            Cookies.set('password', this.form.password);
+                            this.$store.commit('setAvator', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg');
+                            if (this.form.userName === 'iview_admin') {
+                                Cookies.set('access', 0);
+                            } else {
+                                Cookies.set('access', 1);
+                            }
+                            this.$router.push({
+                                name: 'home_index'
+                            });
+                        }
+                    })
                 }
             });
         }

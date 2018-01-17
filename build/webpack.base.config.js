@@ -85,5 +85,15 @@ module.exports = {
             'vue': 'vue/dist/vue.esm.js',
             '@': resolve('../src'),
         }
+    },
+    devServer: {
+        port: 8080,
+        proxy: {
+          '/api': {
+            target: 'http://aks.unohacha.com',
+            pathRewrite: {'^/api' : ''},
+            changeOrigin: true
+          }
+        }
     }
 };

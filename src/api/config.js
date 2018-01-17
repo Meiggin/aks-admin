@@ -1,3 +1,1 @@
-import util from './libs/util';
-
-export const axiso = util.axiso;
+export const ERR_OK = '1';

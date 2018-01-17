@@ -100,6 +100,7 @@ export default {
                     title: '姓名',
                     key: 'name',
                     align: 'center',
+                    width: 120
                 },
                 {
                     title: '公司名称',
