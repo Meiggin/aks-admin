@@ -1,8 +1,3 @@
-<style lang="less">
-    @import '../../styles/common.less';
-    @import '../../components/table/table.less';
-</style>
-
 <template>
     <div>
         <Row class="margin-top-10">
@@ -11,11 +6,12 @@
                 <Card>
                     <p slot="title">
                         <!-- <Icon type="ios-keypad"></Icon> -->
-                        商品分类
+                        积分兑换订单
                         <span class="title_right">
-                            <Button type="primary">导出订单</Button>
-                            <Button type="primary">导出发票</Button>
+                            <Button type="primary"> 物流信息录入</Button>
+                            <Button type="primary">订单导出</Button>
                         </span>
+                       
                     </p>
                     <div class="searchBox" style="margin: 0px 0px 16px;">
                         <Row>
@@ -74,10 +70,10 @@
 <script>
 
 import canEditTable from '@/components/table/canEditTable.vue';
-import commonPageSet from '@/template/commonPageSet.js';
+import commonPageSet from '@/libs/commonPageSet.js';
 
 export default {
-    name: 'order-vip',
+    name: 'integral-order',
     mixins: [commonPageSet],
     components: {
         canEditTable
@@ -111,6 +107,11 @@ export default {
                     key: 'typeText',
                     align: 'center',
                 },
+                 {
+                    title: '订单状态',
+                    key: 'typeText',
+                    align: 'center',
+                },
                 {
                     title: '下单时间',
                     key: 'typeText',
@@ -121,7 +122,7 @@ export default {
                     align: 'center',
                     width: 270,
                     button: ['detail','delete']
-                }
+                }	
             ],
             searchParamsList: {
                 type:'',

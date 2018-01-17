@@ -1,7 +1,3 @@
-<style lang="less">
-    @import '../../styles/common.less';
-    @import '../../components/table/table.less';
-</style>
 
 <template>
     <div>
@@ -40,31 +36,6 @@
                         
                     </Row>
 
-
-                    <Row>
-                        <Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="100">
-                            <FormItem label="选择群组">
-                                <Row>
-                                    <Col span="5">
-                                        <Select v-model="formCustom.group" placeholder="">
-                                            <Option v-for="item in formCustom.groupList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                                        </Select>
-                                    </Col>
-                                </Row>
-                            </FormItem>
-                            <FormItem label="特权码名称" prop="tqmName">
-                                <Row>
-                                    <Col span="5">
-                                        <Input v-model="formCustom.tqmName" placeholder=""></Input>
-                                    </Col>
-                                </Row>
-                            </FormItem>
-                            <FormItem>
-                                <Button type="primary" @click="handleSubmit('formCustom')">添加特权码</Button>
-                                <Button type="ghost" @click="handleReset('formCustom')" style="margin-left: 8px">重置</Button>
-                            </FormItem>
-                        </Form>
-                    </Row>
                 </Card>
             </Col>
 
@@ -76,7 +47,7 @@
 <script>
 
 import canEditTable from '@/components/table/canEditTable.vue';
-import commonPageSet from '@/template/commonPageSet.js';
+import commonPageSet from '@/libs/commonPageSet.js';
 
 const checkSort = (rule, value, callback) => {
     let g = /^[1-9]*[1-9][0-9]*$/;  
@@ -129,26 +100,7 @@ export default {
                     width: 90,
                     button: ['see']
                 }
-            ],
-            formCustom: {
-                group: 1,
-                groupList:[ 
-                    {
-                        value: 1,
-                        label: '赠送'
-                    },
-                    {
-                        value: 2,
-                        label: '扣除'
-                    }
-                ],
-                tqmName:''
-            },
-            ruleCustom: {
-                tqmName: [
-                    { required: true, message: '备注不能为空', trigger: 'blur' }
-                ],
-            }
+            ]
         }
     },
     methods: {

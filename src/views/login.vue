@@ -44,7 +44,7 @@ export default {
     data () {
         return {
             form: {
-                userName: 'iview_admin',
+                userName: '',
                 password: ''
             },
             rules: {
@@ -61,9 +61,9 @@ export default {
         handleSubmit () {
             this.$refs.loginForm.validate((valid) => {
                 if (valid) {
-                    login(this.userName,this.password).then((res)=>{
-                        if (res.status !== '1') {
-                            this.$Message.warning(res.info);
+                    login(this.form.userName,this.form.password).then((data)=>{
+                        if (data.status !== '1') {
+                            this.$Message.warning(data.info);
                         }else{
                             Cookies.set('user', this.form.userName);
                             Cookies.set('password', this.form.password);

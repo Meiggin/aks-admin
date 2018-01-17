@@ -25,7 +25,7 @@
         <Modal v-model="imgPrev.show">
             <p slot="header" style="color:#1c2438;text-align:center">预览图片</p>
             <img :src="imgPrev.src" alt="" v-if="imgPrev.show" style="width: 100%;">
-            <div slot="footer"></div>
+            <!-- <div slot="footer"></div> -->
         </Modal>
 
     </div>
@@ -158,38 +158,6 @@ const cellInput = (vm, h, param, item) => {
         }
     });
 };
-// const my_editButton = (vm, h , currentRow , index) => {
-//     return h('Button', {
-//         props: {
-//             type: 'primary'        
-//         },
-//         style: {
-//             margin: '0 5px',
-//             minWidth: '40px'
-//         },
-//         on: {
-//             'click': () => {
-//                vm.$emit('on-edit', vm.handleBackdata(vm.thisTableData), index);
-//             }
-//         }
-//     }, '编辑');
-// };
-// const my_detailButton = (vm, h , currentRow , index) => {
-//     return h('Button', {
-//         props: {
-//             type: 'primary'        
-//         },
-//         style: {
-//             margin: '0 5px',
-//             minWidth: '40px'
-//         },
-//         on: {
-//             'click': () => {
-//                vm.$emit('on-edit', vm.handleBackdata(vm.thisTableData), index);
-//             }
-//         }
-//     }, '详情');
-// };
 const my_deleteButton = (vm, h, currentRow , index) => {
     return h('Poptip', {
         props: {
@@ -217,7 +185,6 @@ const my_deleteButton = (vm, h, currentRow , index) => {
     ]);
 };
 const my_otherButton = (vm, h, name , currentRow , index) => {
-    // console.log(name);
     
     let buttonName,popTitle,type;
     switch(name){

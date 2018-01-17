@@ -60,7 +60,45 @@ export const otherRouter = {
         { path: 'ownspace', title: '个人中心', name: 'ownspace_index', component: () => import('@/views/own-space/own-space.vue') },
         { path: 'order/:order_id', title: '订单详情', name: 'order-info', component: () => import('@/views/advanced-router/component/order-info.vue') }, // 用于展示动态路由
         { path: 'shopping', title: '购物详情', name: 'shopping', component: () => import('@/views/advanced-router/component/shopping-info.vue') }, // 用于展示带参路由
-        { path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue') }    ]
+        { path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue') },
+        
+        // { path: 'editGoods', title: '商品修改', name: 'edit-goods', component: resolve => { require(['@/views/goods-manage/edit-goods.vue'], resolve); } },
+        // { path: 'editBrand', title: '编辑品牌', name: 'edit-brand', component: resolve => { require(['@/views/goods-manage/edit-brand.vue'], resolve); } },
+        // { path: 'editType', title: '编辑分类', name: 'edit-type',  component: resolve => { require(['@/views/goods-manage/edit-type.vue'], resolve); } },
+
+        // { path: 'orderDetail', title: '订单详情', name: 'order-detail', component: resolve => { require(['@/views/order-center/order-detail.vue'], resolve); } },
+        // { path: 'rightsDetail', title: '维权详情', name: 'rights-detail', component: resolve => { require(['@/views/order-center/rights-detail.vue'], resolve); } },
+        // { path: 'addReply', title: '添加回复内容', name: 'add-reply',  component: resolve => { require(['@/views/order-center/add-reply.vue'], resolve); } },
+
+        // { path: 'preSaleDetail', title: '编辑预售活动', name: 'pre-sale-detail',  component: resolve => { require(['@/views/marketing-gameplay/pre-sale-detail.vue'], resolve); } },
+        // { path: 'amendgoods', title: '修改商品', name: 'amend-goods', component: resolve => { require(['@/views/marketing-gameplay/amend-goods.vue'], resolve); } },
+        // { path: 'bargainlist', title: '疯狂砍价活动配置', name: 'bargain-list', component: resolve => { require(['@/views/marketing-gameplay/bargain-list.vue'], resolve); } },
+        // { path: 'commoditycombination', title: '商品组合', name: 'commodity-combination',  component: resolve => { require(['@/views/marketing-gameplay/commodity-combination.vue'], resolve); } },
+        // { path: 'grouppurchase', title: '团购活动配置', name: 'group-purchase',  component: resolve => { require(['@/views/marketing-gameplay/group-purchase.vue'], resolve); } },
+        // { path: 'limitedpurchase', title: '添加商品', name: 'limited-purchase',  component: resolve => { require(['@/views/marketing-gameplay/limited-purchase.vue'], resolve); } },
+        
+        // { path: 'registeredgiftbag', title: '注册礼包配置', name: 'registered-giftbag',  component: resolve => { require(['@/views/marketing-gameplay/registered-giftbag.vue'], resolve); } },
+        // { path: 'registeredreceive', title: '注册礼包领取日志', name: 'registered-receive',  component: resolve => { require(['@/views/marketing-gameplay/registered-receive.vue'], resolve); } },
+        // { path: 'turntablelist', title: '修改大转盘活动', name: 'turntable-list',  component: resolve => { require(['@/views/marketing-gameplay/turntable-list.vue'], resolve); } },
+
+        // { path: 'edit-picture', title: '编辑轮播图', name: 'edit-picture', component: resolve => { require(['@/views/system-page/edit-picture.vue'], resolve); } },
+        // { path: 'modify-link', title: '修改友情链接', name: 'modify-link', component: resolve => { require(['@/views/system-page/modify-link.vue'], resolve); } },
+        // { path: 'modify-seo', title: '修改SEO', name: 'modify-seo',  component: resolve => { require(['@/views/system-page/modify-seo.vue'], resolve); } },
+
+        // { path: 'reservationsetting', title: '预约设置', name: 'reservation-setting', component: resolve => { require(['@/views/firstlevel-systemmanagement/reservation-setting.vue'], resolve); } },
+        // { path: 'regionalsetting', title: '区域设置', name: 'regional-setting', component: resolve => { require(['@/views/firstlevel-systemmanagement/regional-setting.vue'], resolve); } },
+        // { path: 'systeminformation', title: '系统信息设置', name: 'system-information',  component: resolve => { require(['@/views/firstlevel-systemmanagement/system-information.vue'], resolve); } },
+        // { path: 'smsgatewaysetup', title: '短信网关设置', name: 'smsgateway-setup',  component: resolve => { require(['@/views/firstlevel-systemmanagement/smsgateway-setup.vue'], resolve); } },
+        // { path: 'registrationsettings', title: '注册设置', name: 'registration-settings',  component: resolve => { require(['@/views/firstlevel-systemmanagement/registration-settings.vue'], resolve); } },
+        // { path: 'templatesetting', title: '模板设置', name: 'template-setting',  component: resolve => { require(['@/views/firstlevel-systemmanagement/template-setting.vue'], resolve); } },
+        // { path: 'shopname', title: '店铺名称模板设置', name: 'shop-name',  component: resolve => { require(['@/views/firstlevel-systemmanagement/shop-name.vue'], resolve); } },
+        // { path: 'mailserver', title: '邮件服务器设置', name: 'mail-server',  component: resolve => { require(['@/views/firstlevel-systemmanagement/mail-server.vue'], resolve); } },
+        // { path: 'versionsetting', title: '版本设置', name: 'version-setting',  component: resolve => { require(['@/views/firstlevel-systemmanagement/version-setting.vue'], resolve); } },
+        // { path: 'configureordesetting', title: '订单设置', name: 'configureorder-setting',  component: resolve => { require(['@/views/firstlevel-systemmanagement/configureorder-setting.vue'], resolve); } },
+        // { path: 'marketingsetup', title: '营销设置', name: 'marketing-setup',  component: resolve => { require(['@/views/firstlevel-systemmanagement/marketing-setup.vue'], resolve); } },
+        // { path: 'websiteconstructionsetting', title: '网站建设设置', name: 'websiteconstruction-setting',  component: resolve => { require(['@/views/firstlevel-systemmanagement/websiteconstruction-setting.vue'], resolve); } }
+
+    ]
 };
 
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
@@ -120,72 +158,72 @@ export const appRouter = [
     //         { path: 'index', title: {i18n: 'international'}, name: 'international_index', component: () => import('@/views/international/international.vue') }
     //     ]
     // },
-    // {
-    //     path: '/component',
-    //     icon: 'social-buffer',
-    //     name: 'component',
-    //     title: '组件',
-    //     component: Main,
-    //     children: [
-    //         {
-    //             path: 'text-editor',
-    //             icon: 'compose',
-    //             name: 'text-editor',
-    //             title: '富文本编辑器',
-    //             component: () => import('@/views/my-components/text-editor/text-editor.vue')
-    //         },
-    //         {
-    //             path: 'md-editor',
-    //             icon: 'pound',
-    //             name: 'md-editor',
-    //             title: 'Markdown编辑器',
-    //             component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
-    //         },
-    //         {
-    //             path: 'image-editor',
-    //             icon: 'crop',
-    //             name: 'image-editor',
-    //             title: '图片预览编辑',
-    //             component: () => import('@/views/my-components/image-editor/image-editor.vue')
-    //         },
-    //         {
-    //             path: 'draggable-list',
-    //             icon: 'arrow-move',
-    //             name: 'draggable-list',
-    //             title: '可拖拽列表',
-    //             component: () => import('@/views/my-components/draggable-list/draggable-list.vue')
-    //         },
-    //         {
-    //             path: 'area-linkage',
-    //             icon: 'ios-more',
-    //             name: 'area-linkage',
-    //             title: '城市级联',
-    //             component: () => import('@/views/my-components/area-linkage/area-linkage.vue')
-    //         },
-    //         {
-    //             path: 'file-upload',
-    //             icon: 'android-upload',
-    //             name: 'file-upload',
-    //             title: '文件上传',
-    //             component: () => import('@/views/my-components/file-upload/file-upload.vue')
-    //         },
-    //         {
-    //             path: 'count-to',
-    //             icon: 'arrow-graph-up-right',
-    //             name: 'count-to',
-    //             title: '数字渐变',
-    //             // component: () => import('@/views/my-components/count-to/count-to.vue')
-    //             component: () => import('@/views/my-components/count-to/count-to.vue')
-    //         },
-    //         {
-    //             path: 'split-pane-page',
-    //             icon: 'ios-pause',
-    //             name: 'split-pane-page',
-    //             title: 'split-pane',
-    //             component: () => import('@/views/my-components/split-pane/split-pane-page.vue')
-    //         }
-    //     ]
-    // },
+    {
+        path: '/component',
+        icon: 'social-buffer',
+        name: 'component',
+        title: '组件',
+        component: Main,
+        children: [
+            {
+                path: 'text-editor',
+                icon: 'compose',
+                name: 'text-editor',
+                title: '富文本编辑器',
+                component: () => import('@/views/my-components/text-editor/text-editor.vue')
+            },
+            {
+                path: 'md-editor',
+                icon: 'pound',
+                name: 'md-editor',
+                title: 'Markdown编辑器',
+                component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
+            },
+            {
+                path: 'image-editor',
+                icon: 'crop',
+                name: 'image-editor',
+                title: '图片预览编辑',
+                component: () => import('@/views/my-components/image-editor/image-editor.vue')
+            },
+            {
+                path: 'draggable-list',
+                icon: 'arrow-move',
+                name: 'draggable-list',
+                title: '可拖拽列表',
+                component: () => import('@/views/my-components/draggable-list/draggable-list.vue')
+            },
+            {
+                path: 'area-linkage',
+                icon: 'ios-more',
+                name: 'area-linkage',
+                title: '城市级联',
+                component: () => import('@/views/my-components/area-linkage/area-linkage.vue')
+            },
+            {
+                path: 'file-upload',
+                icon: 'android-upload',
+                name: 'file-upload',
+                title: '文件上传',
+                component: () => import('@/views/my-components/file-upload/file-upload.vue')
+            },
+            {
+                path: 'count-to',
+                icon: 'arrow-graph-up-right',
+                name: 'count-to',
+                title: '数字渐变',
+                // component: () => import('@/views/my-components/count-to/count-to.vue')
+                component: () => import('@/views/my-components/count-to/count-to.vue')
+            },
+            {
+                path: 'split-pane-page',
+                icon: 'ios-pause',
+                name: 'split-pane-page',
+                title: 'split-pane',
+                component: () => import('@/views/my-components/split-pane/split-pane-page.vue')
+            }
+        ]
+    },
     // {
     //     path: '/form',
     //     icon: 'android-checkbox',
@@ -271,13 +309,17 @@ export const appRouter = [
         component: Main,
         children: [
             { path: 'controlCenter', title: '控制中心', name: 'control-center', component: resolve => { require(['@/views/marketing-gameplay/control-center.vue'], resolve); } },
-            { path: 'advanceSale', title: '预售活动', name: 'advance-sale',  component: resolve => { require(['@/views/marketing-gameplay/advance-sale.vue'], resolve); } },
+            { path: 'preSale', title: '预售活动', name: 'pre-sale',  component: resolve => { require(['@/views/marketing-gameplay/pre-sale.vue'], resolve); } },
             { path: 'specialOffer', title: '限时特价', name: 'special-offer', component: resolve => { require(['@/views/marketing-gameplay/special-offer.vue'], resolve); } },
             { path: 'registerPackage', title: '注册礼包列表', name: 'register-package',  component: resolve => { require(['@/views/marketing-gameplay/register-package.vue'], resolve); } },
             { path: 'timeLimit', title: '限时限购', name: 'time-limit', component: resolve => { require(['@/views/marketing-gameplay/time-limit.vue'], resolve); } },
             { path: 'insaneBargain', title: '疯狂砍价', name: 'insane-bargain',  component: resolve => { require(['@/views/marketing-gameplay/insane-bargain.vue'], resolve); } },
             { path: 'groupPurch', title: '团购', name: 'group-purch', component: resolve => { require(['@/views/marketing-gameplay/group-purch.vue'], resolve); } },
             { path: 'rotaryTable', title: '大转盘', name: 'rotary-table',  component: resolve => { require(['@/views/marketing-gameplay/rotary-table.vue'], resolve); } },
+            { path: 'rotaryPrize', title: '大转盘奖项列表', name: 'rotary-prize',  component: resolve => { require(['@/views/marketing-gameplay/rotary-prize.vue'], resolve); } },
+            { path: 'rotaryClass', title: '大转盘奖项分类列表', name: 'rotary-class',  component: resolve => { require(['@/views/marketing-gameplay/rotary-class.vue'], resolve); } },
+            { path: 'rotaryGoods', title: '大转盘商品列表', name: 'rotary-goods',  component: resolve => { require(['@/views/marketing-gameplay/rotary-goods.vue'], resolve); } },
+            { path: 'rotaryOrder', title: '大转盘订单列表', name: 'rotary-order',  component: resolve => { require(['@/views/marketing-gameplay/rotary-order.vue'], resolve); } },
             { path: 'groupBuy', title: '组合套购', name: 'group-buy',  component: resolve => { require(['@/views/marketing-gameplay/group-buy.vue'], resolve); } },
         ]
     },
@@ -328,6 +370,18 @@ export const appRouter = [
             { path: 'marketSetting', title: '营销设置', name: 'market-setting',  component: resolve => { require(['@/views/system-setting/market-setting.vue'], resolve); } },
             { path: 'webSetting', title: '网站建设设置', name: 'web-setting', component: resolve => { require(['@/views/system-setting/web-setting.vue'], resolve); } },
             { path: 'orderSetting', title: '订单设置', name: 'order-setting',  component: resolve => { require(['@/views/system-setting/order-setting.vue'], resolve); } },
+        ]
+    },
+    {
+        path: '/accessManage',
+        name: 'access-manage',
+        title: '权限管理',
+        component: Main,
+        children: [
+            { path: 'adminList', title: '管理员列表', name: 'admin-list', component: () => import('@/views/access-manage/admin-list.vue') },
+            { path: 'roleList', title: '角色列表', name: 'role-list', component: () => import('@/views/access-manage/role-list.vue') },
+            { path: 'menuList', title: '菜单管理', name: 'menu-list', component: () => import('@/views/access-manage/menu-list.vue') },
+            { path: 'nodeList', title: '节点列表', name: 'node-list', component: () => import('@/views/access-manage/node-list.vue') }
         ]
     },
     // {

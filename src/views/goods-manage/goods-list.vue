@@ -1,7 +1,3 @@
-<style lang="less">
-    @import '../../styles/common.less';
-    @import '../../components/table/table.less';
-</style>
 
 <template>
     <div>
@@ -53,10 +49,10 @@
                                     <div slot="bottom_left">
                                         <Button type="success" @click="selectAll(true)">全选</Button>
                                         <Button type="warning" @click="selectAll(false)">取消</Button>
-                                        <Button type="success" @click="changeSelectIsSale(true)">上架</Button>
-                                        <Button type="warning" @click="changeSelectIsSale(false)">下架</Button>
-                                        <Button type="success" @click="changeIsSaleAll(true)">一键上架</Button>
-                                        <Button type="warning" @click="changeIsSaleAll(false)">一键下架</Button>
+                                        <Button type="success" @click="changeSelectStatus(true,getBannerList)">上架</Button>
+                                        <Button type="warning" @click="changeSelectStatus(false,getBannerList)">下架</Button>
+                                        <Button type="success" @click="changeStatusAll(true,getBannerList)">一键上架</Button>
+                                        <Button type="warning" @click="changeStatusAll(false,getBannerList)">一键下架</Button>
                                     </div>
                                 </can-edit-table>
                             </div>
@@ -73,7 +69,10 @@
 <script>
 
 import canEditTable from '@/components/table/canEditTable.vue';
-import commonPageSet from '@/template/commonPageSet.js';
+import commonPageSet from '@/libs/commonPageSet.js';
+import commonSelect from '@/libs/commonSelect.js';
+import commonChangeStatus from '@/libs/commonChangeStatus.js';
+import { getBannerList } from '@/api/website/home-page.js';
 
 const isSaleButton = (vm, h, currentRow , index) => {
     return h('Button', {
@@ -86,7 +85,7 @@ const isSaleButton = (vm, h, currentRow , index) => {
         },
         on: {
             'click': () => {
-                vm.changeIsSale(index);
+                vm.changeStatus(index,vm.getBannerList);
             }
         }
     }, currentRow.isSale ? '上架' : '下架');
@@ -94,18 +93,13 @@ const isSaleButton = (vm, h, currentRow , index) => {
 
 export default {
     name: 'goods-list',
-    mixins: [commonPageSet],
+    mixins: [commonPageSet,commonSelect,commonChangeStatus],
     components: {
         canEditTable
     },
     data () {
         return {
             listColumns:[
-                {
-                    type: 'selection',
-                    align: 'center',
-                    width: 60
-                },
                 {
                     title: '商品ID',
                     key: 'id',
@@ -179,6 +173,7 @@ export default {
                     button: ['edit','delete']
                 }
             ],
+            statusName: 'isSale',
             typeList:[],
             brandList:[
                 {
@@ -196,39 +191,11 @@ export default {
             currentPage:1,
             total:0,
             pageSize:10,
-            selectData:[]
         };
     },
     computed: {
-        isSaleTrueList(){
-            let arr = [];
-            for(let i in this.listData){
-                if (this.listData[i].isSale == true) {
-                    arr.push(i);
-                }
-            }
-            return arr;
-        },
-        isSaleFalseList(){
-            let arr = [];
-            for(let i in this.listData){
-                if (this.listData[i].isSale == false) {
-                    arr.push(i);
-                }
-            }
-            return arr;
-        },
-        selectList(){
-            let arr1 = [],arr2 = [];
-            for(let i in this.selectData){
-                arr1.push(this.selectData[i].id)
-            }
-            for(let i in this.listData){
-                if (arr1.indexOf(this.listData[i].id)!==-1) {
-                    arr2.push(i)
-                }
-            }
-            return arr2;
+        getBannerList(){
+            return getBannerList;
         }
     },
     methods: {
@@ -268,37 +235,6 @@ export default {
             }
             return data;
         },
-        changeIsSale (index){
-            const msg = this.$Message.loading({
-                content: '加载中...',
-                duration: 0
-            });
-            this.listData[index].isSale = !this.listData[index].isSale;
-            this.$set(this.listData,[index],this.listData[index]);
-            msg();
-        },
-        changeSelectIsSale (status){
-            if(this.selectList.length !== 0){
-                console.log(this.selectList);
-                for(let i of this.selectList){
-                    this.listData[i].isSale = status;
-                }
-                this.$set(this.listData,0,this.listData[0]);
-                this.selectAll(false);
-            }
-        },
-        changeIsSaleAll (status){
-            if (status) {
-                for(let i of this.isSaleFalseList){
-                    this.listData[i].isSale = status;
-                } 
-            }else{
-                for(let i of this.isSaleTrueList){
-                    this.listData[i].isSale = status;
-                } 
-            }
-            this.$set(this.listData,0,this.listData[0]);
-        },
         editGoods (data,index){
             let query = {id: this.listData[index].id};
             this.$router.push({
@@ -310,13 +246,6 @@ export default {
             this.listData.splice(index, 1);
             this.$Message.success('删除成功');
             this.getData();
-        },
-        selectAll (status){
-           this.$refs.listTable.$refs.table.selectAll(status);
-        },
-        selectChange (selection){
-            console.log(selection);
-            this.selectData = selection;
         }
     },
     created () {

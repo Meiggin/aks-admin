@@ -1,7 +1,3 @@
-<style lang="less">
-    @import '../../styles/common.less';
-    @import '../../components/table/table.less';
-</style>
 
 <template>
     <div>
@@ -51,7 +47,7 @@
 <script>
 
 import canEditTable from '@/components/table/canEditTable.vue';
-import commonPageSet from '@/template/commonPageSet.js';
+import commonPageSet from '@/libs/commonPageSet.js';
 
 export default {
     name: 'brand-list',
