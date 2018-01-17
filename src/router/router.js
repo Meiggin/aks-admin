@@ -69,7 +69,6 @@ export const otherRouter = {
 export const appRouter = [
     {
         path: '/website',
-        icon: 'key',
         name: 'website',
         title: '官网',
         component: Main,
@@ -85,7 +84,6 @@ export const appRouter = [
     },
     {
         path: '/store',
-        icon: 'key',
         name: 'store',
         title: '商城',
         component: Main,
@@ -97,7 +95,6 @@ export const appRouter = [
     },
     {
         path: '/access',
-        icon: 'key',
         name: 'access',
         title: '权限管理',
         component: Main,
@@ -107,7 +104,6 @@ export const appRouter = [
     },
     {
         path: '/access-test',
-        icon: 'lock-combination',
         title: '权限测试页',
         name: 'accesstest',
         access: 0,
@@ -219,7 +215,6 @@ export const appRouter = [
     {
         path: '/orderCenter',
         name: 'order-center',
-        icon: 'drag',
         title: '订单中心',
         component: Main,
         children: [
@@ -237,7 +232,6 @@ export const appRouter = [
     {
         path: '/memberManage',
         name: 'member-manage',
-        icon: 'compose',
         title: '会员管理',
         component: Main,
         children: [
@@ -251,7 +245,6 @@ export const appRouter = [
     {
         path: '/goodsManage',
         name: 'goods-manage',
-        icon: 'compose',
         title: '商品管理',
         component: Main,
         children: [
@@ -264,7 +257,6 @@ export const appRouter = [
     {
         path: '/integralManage',
         name: 'integral-manage',
-        icon: 'compose',
         title: '积分管理',
         component: Main,
         children: [
@@ -277,7 +269,6 @@ export const appRouter = [
     {
         path: '/marketingGameplay',
         name: 'marketing-gameplay',
-        icon: 'compose',
         title: '营销玩法',
         component: Main,
         children: [
@@ -320,7 +311,6 @@ export const appRouter = [
     {
         path: '/systemSetting',
         name: 'system-setting',
-        icon: 'compose',
         title: '系统配置',
         component: Main,
         children: [

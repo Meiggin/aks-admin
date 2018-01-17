@@ -12,6 +12,11 @@
                     <p slot="title">
                         <!-- <Icon type="ios-keypad"></Icon> -->
                         会员列表
+                        <span class="title_right">
+                            <Button type="primary">新增</Button>
+                            <Button type="primary">导出会员</Button>
+                            <Button type="primary">赠送积分导出</Button>
+                        </span>
                     </p>
 					<div class="searchBox" style="margin: 0px 0px 16px;">
 						<Row>
@@ -109,7 +114,7 @@
                     <FormItem label="备注" prop="remark">
                         <Row>
                             <Col span="20">
-                                <Input v-model="formCustom.remark" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入备注"></Input>
+                                <Input v-model="formCustom.remark" type="textarea" :autosize="{minRows: 3,maxRows: 6}" placeholder="请输入备注"></Input>
                             </Col>
                         </Row>
                     </FormItem>
@@ -271,6 +276,7 @@ export default {
         },
         giveScore(){
             this.$Message.success('提交成功 !');
+            this.formCustom.show = false;
         }
     },
     created () {

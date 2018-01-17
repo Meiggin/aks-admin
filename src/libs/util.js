@@ -7,7 +7,7 @@ let util = {
 
 };
 util.title = function (title) {
-    title = title || 'iView admin';
+    title = title || 'aks admin';
     window.document.title = title;
 };
 
@@ -21,6 +21,8 @@ util.ajax = axios.create({
     baseURL: ajaxUrl,
     timeout: 30000
 });
+
+console.log(util.ajax)
 
 util.inOf = function (arr, targetArr) {
     let res = true;
@@ -138,7 +140,7 @@ util.setCurrentPath = function (vm, name) {
         if (currentPathObj.children.length <= 1 && currentPathObj.name === 'home') {
             currentPathArr = [
                 {
-                    title: '首页',
+                    title: '管理中心',
                     path: '',
                     name: 'home_index'
                 }
@@ -146,7 +148,7 @@ util.setCurrentPath = function (vm, name) {
         } else if (currentPathObj.children.length <= 1 && currentPathObj.name !== 'home') {
             currentPathArr = [
                 {
-                    title: '首页',
+                    title: '管理中心',
                     path: '/home',
                     name: 'home_index'
                 },
@@ -162,7 +164,7 @@ util.setCurrentPath = function (vm, name) {
             })[0];
             currentPathArr = [
                 {
-                    title: '首页',
+                    title: '管理中心',
                     path: '/home',
                     name: 'home_index'
                 },
