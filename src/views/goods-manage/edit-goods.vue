@@ -1,3 +1,5 @@
+
+
 <template>
 <Row class="margin-top-10">
             <Col span="24">
@@ -212,11 +214,11 @@
 </template>
 
 <script>
-import texteditor from "../goods-manage/text-editor.vue"
-import texteditor1 from "../goods-manage/text-editor.1.vue"
-import texteditor2 from "../goods-manage/text-editor.2.vue"
-import texteditor3 from "../goods-manage/text-editor.3.vue"
-import texteditor4 from "../goods-manage/text-editor.4.vue"
+import texteditor from "@/components/texteidt/text-editor.vue"
+import texteditor1 from "@/components/texteidt/text-editor.1.vue"
+import texteditor2 from "@/components/texteidt/text-editor.2.vue"
+import texteditor3 from "@/components/texteidt/text-editor.3.vue"
+import texteditor4 from "@/components/texteidt/text-editor.4.vue"
     export default {
         components: {
         texteditor,

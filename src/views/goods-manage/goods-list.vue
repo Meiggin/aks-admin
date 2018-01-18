@@ -74,7 +74,7 @@ import commonSelect from '@/libs/commonSelect.js';
 import commonChangeStatus from '@/libs/commonChangeStatus.js';
 import { getBannerList } from '@/api/website/home-page.js';
 
-const isSaleButton = (vm, h, currentRow , index) => {
+const isButton = (vm, h, currentRow , index) => {
     return h('Button', {
         props: {
             type: currentRow.isSale ? 'success' : 'warning'
@@ -162,7 +162,7 @@ export default {
                     width: 90,
                     render: (h, params) => {
                         return h('div',[
-                            isSaleButton(this,h,params.row,params.index)
+                            isButton(this,h,params.row,params.index)
                         ]);
                     }
                 },

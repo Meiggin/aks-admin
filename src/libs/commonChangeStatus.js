@@ -64,6 +64,7 @@ export default {
                         this.listData[i][this.statusName] = status;
                     } 
                 }
+                console.log(this.listData)
                 this.$set(this.listData,0,this.listData[0]);
             })  
         }

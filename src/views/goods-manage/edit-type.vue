@@ -1,13 +1,14 @@
+
+
 <template>
-        <Row class="margin-top-10">
-            <Col span="24">
-                <Card>
-                    <p slot="title">
-                        <!-- <Icon type="ios-keypad"></Icon> -->
-                        编辑分类
-                    </p>
-                
-            
+    <Row class="margin-top-10">
+        <Col span="24">
+        <Card>
+            <p slot="title">
+                编辑分类
+            </p>
+
+
             <Form :model="formItem" :label-width="80">
                 <FormItem label="品牌名称:">
                     <Input v-model="formItem.Brandname" placeholder=""></Input>
@@ -32,9 +33,9 @@
                     <Input v-model="formItem.Displaysort" placeholder=""></Input>
                 </FormItem>
             </Form>
-            </Card>
-            </Col>
-        </Row>
+        </Card>
+        </Col>
+    </Row>
 </template>
 
 <script>

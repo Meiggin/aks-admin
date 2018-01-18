@@ -61,42 +61,38 @@ export const otherRouter = {
         { path: 'order/:order_id', title: '订单详情', name: 'order-info', component: () => import('@/views/advanced-router/component/order-info.vue') }, // 用于展示动态路由
         { path: 'shopping', title: '购物详情', name: 'shopping', component: () => import('@/views/advanced-router/component/shopping-info.vue') }, // 用于展示带参路由
         { path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue') },
+
+        { path: 'editGoods', title: '商品修改', name: 'edit-goods', component: () => import('@/views/goods-manage/edit-goods.vue') },
+        { path: 'editBrand', title: '编辑品牌', name: 'edit-brand', component: () => import('@/views/goods-manage/edit-brand.vue') },
+        { path: 'editType', title: '编辑分类', name: 'edit-type',  component: () =>  import('@/views/goods-manage/edit-type.vue' )},
+
+        { path: 'orderDetail', title: '订单详情', name: 'order-detail', component: () =>  import('@/views/order-center/order-detail.vue' ) },
+        { path: 'rightsDetail', title: '维权详情', name: 'rights-detail', component: () =>  import('@/views/order-center/rights-detail.vue') },
+        { path: 'addReplyclass', title: '添加回复内容', name: 'add-replyclass',  component: () =>  import('@/views/order-center/add-replyclass.vue') },
+
+        { path: 'addClassification', title: '添加分类群组', name: 'add-classification', component: () => import('@/views/member-manage/add-classification.vue') },
+        { path: 'editClassification', title: '编辑分类群组', name: 'edit-classification', component: () => import('@/views/member-manage/edit-classification.vue') },
+        { path: 'editOrslist', title: '编辑会员组', name: 'edit-orslist',  component: () => import('@/views/member-manage/edit-orslist.vue') },
+        { path: 'opinionFeedback', title: '意见反馈', name: 'opinion-feedback',  component: () => import('@/views/member-manage/opinion-feedback.vue') },
+        { path: 'userInformation', title: '用户信息管理', name: 'user-information',  component: () => import('@/views/member-manage/user-information.vue') },
+
+        { path: 'orderIntegralDetail', title: '订单详情', name: 'orderintegral-detail', component: () => import('@/views/integral-manage/orderintegral-detail.vue') },
+        { path: 'editGoodsIntegral', title: '编辑商品信息', name: 'edit-goodsintegral', component: () => import('@/views/integral-manage/edit-goodsintegral.vue')},
+        { path: 'rightsIntegralDetail', title: '维权详情', name: 'rightsintegral-detail',  component: () => import('@/views/integral-manage/rightsintegral-detail.vue') },
+
+        { path: 'editAmendGoods', title: '修改商品', name: 'edit-amendGoods', component: () => import('@/views/marketing-gameplay/edit-amendGoods.vue') },
+        { path: 'editBargainList', title: '疯狂砍价活动配置', name: 'edit-bargainlist', component: () => import('@/views/marketing-gameplay/edit-bargainlist.vue') },
+        { path: 'editCommodityCombination', title: '商品组合', name: 'edit-commoditycombination',  component: () => import('@/views/marketing-gameplay/edit-commoditycombination.vue') },
+        { path: 'editGroupPurchase', title: '团购活动配置', name: 'edit-grouppurchase',  component: () => import('@/views/marketing-gameplay/edit-grouppurchase.vue') },
+        { path: 'addLimitedPurchase', title: '添加商品', name: 'add-limitedpurchase',  component: () => import('@/views/marketing-gameplay/add-limitedpurchase.vue') },
+        { path: 'editPreSale', title: '编辑预售活动', name: 'edit-presale',  component: () => import ('@/views/marketing-gameplay/edit-presale.vue') },
+        { path: 'registeredGiftbagDetail', title: '注册礼包配置', name: 'registeredgiftbag-detail',  component: () => import('@/views/marketing-gameplay/registeredgiftbag-detail.vue') },
+        { path: 'registeredReceiveDetail', title: '注册礼包领取日志', name: 'registeredreceive-detail',  component: () => import('@/views/marketing-gameplay/registeredreceive-detail.vue') },
+        { path: 'editTurntableList', title: '修改大转盘活动', name: 'edit-turntablelist',  component: () => import('@/views/marketing-gameplay/edit-turntablelist.vue') },
         
-        // { path: 'editGoods', title: '商品修改', name: 'edit-goods', component: resolve => { require(['@/views/goods-manage/edit-goods.vue'], resolve); } },
-        // { path: 'editBrand', title: '编辑品牌', name: 'edit-brand', component: resolve => { require(['@/views/goods-manage/edit-brand.vue'], resolve); } },
-        // { path: 'editType', title: '编辑分类', name: 'edit-type',  component: resolve => { require(['@/views/goods-manage/edit-type.vue'], resolve); } },
-
-        // { path: 'orderDetail', title: '订单详情', name: 'order-detail', component: resolve => { require(['@/views/order-center/order-detail.vue'], resolve); } },
-        // { path: 'rightsDetail', title: '维权详情', name: 'rights-detail', component: resolve => { require(['@/views/order-center/rights-detail.vue'], resolve); } },
-        // { path: 'addReply', title: '添加回复内容', name: 'add-reply',  component: resolve => { require(['@/views/order-center/add-reply.vue'], resolve); } },
-
-        // { path: 'preSaleDetail', title: '编辑预售活动', name: 'pre-sale-detail',  component: resolve => { require(['@/views/marketing-gameplay/pre-sale-detail.vue'], resolve); } },
-        // { path: 'amendgoods', title: '修改商品', name: 'amend-goods', component: resolve => { require(['@/views/marketing-gameplay/amend-goods.vue'], resolve); } },
-        // { path: 'bargainlist', title: '疯狂砍价活动配置', name: 'bargain-list', component: resolve => { require(['@/views/marketing-gameplay/bargain-list.vue'], resolve); } },
-        // { path: 'commoditycombination', title: '商品组合', name: 'commodity-combination',  component: resolve => { require(['@/views/marketing-gameplay/commodity-combination.vue'], resolve); } },
-        // { path: 'grouppurchase', title: '团购活动配置', name: 'group-purchase',  component: resolve => { require(['@/views/marketing-gameplay/group-purchase.vue'], resolve); } },
-        // { path: 'limitedpurchase', title: '添加商品', name: 'limited-purchase',  component: resolve => { require(['@/views/marketing-gameplay/limited-purchase.vue'], resolve); } },
-        
-        // { path: 'registeredgiftbag', title: '注册礼包配置', name: 'registered-giftbag',  component: resolve => { require(['@/views/marketing-gameplay/registered-giftbag.vue'], resolve); } },
-        // { path: 'registeredreceive', title: '注册礼包领取日志', name: 'registered-receive',  component: resolve => { require(['@/views/marketing-gameplay/registered-receive.vue'], resolve); } },
-        // { path: 'turntablelist', title: '修改大转盘活动', name: 'turntable-list',  component: resolve => { require(['@/views/marketing-gameplay/turntable-list.vue'], resolve); } },
-
-        // { path: 'edit-picture', title: '编辑轮播图', name: 'edit-picture', component: resolve => { require(['@/views/system-page/edit-picture.vue'], resolve); } },
-        // { path: 'modify-link', title: '修改友情链接', name: 'modify-link', component: resolve => { require(['@/views/system-page/modify-link.vue'], resolve); } },
-        // { path: 'modify-seo', title: '修改SEO', name: 'modify-seo',  component: resolve => { require(['@/views/system-page/modify-seo.vue'], resolve); } },
-
-        // { path: 'reservationsetting', title: '预约设置', name: 'reservation-setting', component: resolve => { require(['@/views/firstlevel-systemmanagement/reservation-setting.vue'], resolve); } },
-        // { path: 'regionalsetting', title: '区域设置', name: 'regional-setting', component: resolve => { require(['@/views/firstlevel-systemmanagement/regional-setting.vue'], resolve); } },
-        // { path: 'systeminformation', title: '系统信息设置', name: 'system-information',  component: resolve => { require(['@/views/firstlevel-systemmanagement/system-information.vue'], resolve); } },
-        // { path: 'smsgatewaysetup', title: '短信网关设置', name: 'smsgateway-setup',  component: resolve => { require(['@/views/firstlevel-systemmanagement/smsgateway-setup.vue'], resolve); } },
-        // { path: 'registrationsettings', title: '注册设置', name: 'registration-settings',  component: resolve => { require(['@/views/firstlevel-systemmanagement/registration-settings.vue'], resolve); } },
-        // { path: 'templatesetting', title: '模板设置', name: 'template-setting',  component: resolve => { require(['@/views/firstlevel-systemmanagement/template-setting.vue'], resolve); } },
-        // { path: 'shopname', title: '店铺名称模板设置', name: 'shop-name',  component: resolve => { require(['@/views/firstlevel-systemmanagement/shop-name.vue'], resolve); } },
-        // { path: 'mailserver', title: '邮件服务器设置', name: 'mail-server',  component: resolve => { require(['@/views/firstlevel-systemmanagement/mail-server.vue'], resolve); } },
-        // { path: 'versionsetting', title: '版本设置', name: 'version-setting',  component: resolve => { require(['@/views/firstlevel-systemmanagement/version-setting.vue'], resolve); } },
-        // { path: 'configureordesetting', title: '订单设置', name: 'configureorder-setting',  component: resolve => { require(['@/views/firstlevel-systemmanagement/configureorder-setting.vue'], resolve); } },
-        // { path: 'marketingsetup', title: '营销设置', name: 'marketing-setup',  component: resolve => { require(['@/views/firstlevel-systemmanagement/marketing-setup.vue'], resolve); } },
-        // { path: 'websiteconstructionsetting', title: '网站建设设置', name: 'websiteconstruction-setting',  component: resolve => { require(['@/views/firstlevel-systemmanagement/websiteconstruction-setting.vue'], resolve); } }
+        { path: 'editPicture', title: '编辑轮播图', name: 'edit-picture', component: () => import('@/views/system-setting/edit-picture.vue') },
+        { path: 'editModifyLink', title: '修改友情链接', name: 'edit-modifylink', component: () => import('@/views/system-setting/edit-modifylink.vue') },
+        { path: 'editModifySeo', title: '修改SEO', name: 'edit-Modifyseo',  component: () => import('@/views/system-setting/edit-Modifyseo.vue') }
 
     ]
 };
@@ -212,7 +208,6 @@ export const appRouter = [
                 icon: 'arrow-graph-up-right',
                 name: 'count-to',
                 title: '数字渐变',
-                // component: () => import('@/views/my-components/count-to/count-to.vue')
                 component: () => import('@/views/my-components/count-to/count-to.vue')
             },
             {
